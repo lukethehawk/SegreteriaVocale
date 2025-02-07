@@ -1,12 +1,23 @@
-Una segreteria vocale che usa le api google tts
+✅ Design e Accessibilità:
 
-Possibilità di inserire la propria API Google TTS direttamente in frontend.
+    Hai implementato una modalità scura, che migliora l’esperienza utente.
+    Il layout è pulito e chiaro, con una buona organizzazione dei contenuti.
+    I pulsanti sono ben dimensionati e facili da usare.
 
-Vengono registrati i caratteri inviati per monitorare l'uso di una API
+✅ Funzionalità Chiave Presenti:
 
-Possibilità di inserire un file musicale in sottofondo e il volume di questo prima del mixaggio con la voce.
+    Integrazione con Google Text-to-Speech (TTS).
+    Possibilità di selezionare una voce e regolare il volume della musica di sottofondo.
+    Upload di file audio per la musica di background.
+    Contatore dei caratteri inviati (utile per monitorare i limiti API).
+    Download dell’audio in formato WAV.
+    Popup per inserire la chiave API con local storage.
 
-Salvataggio del file in WAV
+✅ Gestione della Memoria e UX Migliorata:
+
+    Reset automatico della musica di sottofondo quando si ricarica la pagina.
+    Salvataggio della modalità scura nelle preferenze dell’utente.
+    Controllo per impedire richieste ripetute di mixaggio audio.
 
 ![Screenshot 2025-02-07 153730](https://github.com/user-attachments/assets/283ec992-1a2b-4a93-9ccb-f1cbe6abbe01)
 ![Screenshot 2025-02-07 153815](https://github.com/user-attachments/assets/3077d098-20e4-4681-b2e7-637cbac35fdf)
