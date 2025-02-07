@@ -1,23 +1,24 @@
-✅ Design e Accessibilità:
+✅ Funzionalità Chiave Presenti: 
 
-    Hai implementato una modalità scura, che migliora l’esperienza utente.
-    Il layout è pulito e chiaro, con una buona organizzazione dei contenuti.
-    I pulsanti sono ben dimensionati e facili da usare.
+    Integrazione con Google Text-to-Speech (TTS). 
 
-✅ Funzionalità Chiave Presenti:
+    Possibilità di selezionare una voce e regolare il volume della musica di sottofondo. 
 
-    Integrazione con Google Text-to-Speech (TTS).
-    Possibilità di selezionare una voce e regolare il volume della musica di sottofondo.
-    Upload di file audio per la musica di background.
-    Contatore dei caratteri inviati (utile per monitorare i limiti API).
-    Download dell’audio in formato WAV.
-    Popup per inserire la chiave API con local storage.
+    Upload di file audio per la musica di background. 
 
-✅ Gestione della Memoria e UX Migliorata:
+    Contatore dei caratteri inviati (utile per monitorare i limiti API). 
 
-    Reset automatico della musica di sottofondo quando si ricarica la pagina.
-    Salvataggio della modalità scura nelle preferenze dell’utente.
-    Controllo per impedire richieste ripetute di mixaggio audio.
+    Download dell’audio in formato WAV. 
+
+    Popup per inserire la chiave API con local storage. 
+
+✅ Gestione della Memoria e UX Migliorata: 
+
+    Reset automatico della musica di sottofondo quando si ricarica la pagina. 
+
+    Salvataggio della modalità scura nelle preferenze dell’utente. 
+
+    Controllo per impedire richieste ripetute di mixaggio audio. 
 
 ![Screenshot 2025-02-07 153730](https://github.com/user-attachments/assets/283ec992-1a2b-4a93-9ccb-f1cbe6abbe01)
 ![Screenshot 2025-02-07 153815](https://github.com/user-attachments/assets/3077d098-20e4-4681-b2e7-637cbac35fdf)
