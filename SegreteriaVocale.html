@@ -204,9 +204,18 @@ function closeApiModal() {
 function saveApiKey() {
     const newKey = document.getElementById('apiKeyInput').value;
     if (newKey) {
+        // Se la chiave è diversa da quella attuale, azzera il contatore
+
+		if (newKey !== apiKey) {
+            totalCharacterCount = 0;
+            localStorage.setItem("charCount", 0);
+            updateCharacterCounter();
+        }
+
+        // Salva la nuova chiave
         localStorage.setItem("googleTtsApiKey", newKey);
         apiKey = newKey;
-        alert('Chiave API salvata con successo!');
+        alert('Chiave API salvata con successo! Il contatore dei caratteri inviati è stato azzerato.');
         closeApiModal();
     }
 }
