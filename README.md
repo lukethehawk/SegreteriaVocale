@@ -1,9 +1,11 @@
 Una segreteria vocale che usa le api google tts
 
-Possibilità di inserire la propria API Google TTS direttamente in frontend
+Possibilità di inserire la propria API Google TTS direttamente in frontend.
+
 Vengono registrati i caratteri inviati per monitorare l'uso di una API
 
-Possibilità di inserire un file musicale in sottofondo e il volume di questo prima del mixaggio con la voce
+Possibilità di inserire un file musicale in sottofondo e il volume di questo prima del mixaggio con la voce.
+
 Salvataggio del file in WAV
 
 ![Screenshot 2025-02-07 153730](https://github.com/user-attachments/assets/283ec992-1a2b-4a93-9ccb-f1cbe6abbe01)
