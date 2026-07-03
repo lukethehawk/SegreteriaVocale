@@ -5,7 +5,8 @@ Generatore locale di messaggi per segreteria telefonica con Google Cloud Text-to
 ## Cosa fa
 
 - permette di salvare la chiave Google TTS nel `localStorage` del browser;
-- usa un backend locale Node.js come ponte verso Google Text-to-Speech;
+- usa un backend locale Node.js come ponte verso Google Text-to-Speech durante lo sviluppo;
+- funziona anche su GitHub Pages chiamando Google direttamente dal browser;
 - carica dinamicamente le voci italiane con `voices.list`;
 - supporta le famiglie voce disponibili per `it-IT`, incluse Chirp 3 HD, Chirp HD, Neural2, Wavenet e Standard;
 - permette anteprima voce e filtro per famiglia voce;
@@ -62,6 +63,8 @@ Questo rende il progetto piu facile da mantenere: se Google aggiunge o cambia vo
 La chiave viene salvata nel `localStorage` del browser e inviata al server locale solo nelle chiamate verso `/api/voices` e `/api/synthesize`. Il server non la scrive su disco e non la inserisce nel repository.
 
 In alternativa, per uso locale o automazioni puoi ancora impostare `GOOGLE_TTS_API_KEY` in `.env.local` o come variabile d'ambiente.
+
+Su GitHub Pages non c'e un backend Node.js: in quel caso il frontend chiama direttamente le API Google usando la chiave salvata nel browser.
 
 ## Struttura
 

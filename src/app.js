@@ -53,6 +53,15 @@ function apiHeaders(extra = {}) {
     return apiKey ? { ...extra, "X-Google-TTS-API-Key": apiKey } : extra;
 }
 
+function shouldUseLocalApi() {
+    return ["localhost", "127.0.0.1"].includes(window.location.hostname);
+}
+
+function googleApiUrl(path) {
+    const apiKey = encodeURIComponent(currentApiKey());
+    return `https://texttospeech.googleapis.com/v1/${path}${path.includes("?") ? "&" : "?"}key=${apiKey}`;
+}
+
 function syncApiKeyInput() {
     const apiKey = currentApiKey();
     nodes.apiKeyInput.value = apiKey;
@@ -180,9 +189,9 @@ async function loadVoices() {
 
     try {
         setStatus("Carico le voci italiane da Google Text-to-Speech...");
-        const response = await fetch("/api/voices?languageCode=it-IT", {
-            headers: apiHeaders(),
-        });
+        const response = shouldUseLocalApi()
+            ? await fetch("/api/voices?languageCode=it-IT", { headers: apiHeaders() })
+            : await fetch(googleApiUrl("voices?languageCode=it-IT"));
         const data = await response.json();
 
         if (!response.ok) {
@@ -208,11 +217,25 @@ async function synthesize(text, overrides = {}) {
         audioEncoding: overrides.audioEncoding || nodes.encodingSelect.value,
     };
 
-    const response = await fetch("/api/synthesize", {
-        method: "POST",
-        headers: apiHeaders({ "Content-Type": "application/json" }),
-        body: JSON.stringify(request),
-    });
+    const response = shouldUseLocalApi()
+        ? await fetch("/api/synthesize", {
+            method: "POST",
+            headers: apiHeaders({ "Content-Type": "application/json" }),
+            body: JSON.stringify(request),
+        })
+        : await fetch(googleApiUrl("text:synthesize"), {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                input: { text: request.text },
+                voice: {
+                    languageCode: request.languageCode,
+                    name: request.voiceName,
+                    ssmlGender: request.ssmlGender,
+                },
+                audioConfig: { audioEncoding: request.audioEncoding },
+            }),
+        });
     const data = await response.json();
 
     if (!response.ok) {
