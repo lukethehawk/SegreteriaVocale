@@ -2,6 +2,8 @@ const state = {
     audioContext: null,
     musicBuffer: null,
     currentObjectUrl: null,
+    current3cxObjectUrl: null,
+    currentAudioBuffer: null,
     isBusy: false,
     voices: [],
     filteredVoices: [],
@@ -24,6 +26,7 @@ const nodes = {
     generateButton: document.getElementById("generateButton"),
     audioPlayer: document.getElementById("audioPlayer"),
     downloadButton: document.getElementById("downloadButton"),
+    download3cxButton: document.getElementById("download3cxButton"),
     statusBox: document.getElementById("statusBox"),
     charCounter: document.getElementById("charCounter"),
     usageCounter: document.getElementById("usageCounter"),
@@ -42,6 +45,7 @@ function setBusy(isBusy) {
     state.isBusy = isBusy;
     nodes.generateButton.disabled = isBusy;
     nodes.previewButton.disabled = isBusy;
+    nodes.download3cxButton.disabled = isBusy || !state.currentAudioBuffer;
 }
 
 function currentApiKey() {
@@ -351,16 +355,68 @@ function audioBufferToWav(buffer) {
     return new Blob([view], { type: "audio/wav" });
 }
 
-function publishAudio(blob) {
+async function convertTo3cxBuffer(buffer) {
+    const sampleRate = 8000;
+    const frameCount = Math.ceil(buffer.duration * sampleRate);
+    const context = new OfflineAudioContext(1, frameCount, sampleRate);
+    const source = context.createBufferSource();
+
+    source.buffer = buffer;
+    source.connect(context.destination);
+    source.start(0);
+
+    return context.startRendering();
+}
+
+function publishAudio(buffer) {
     if (state.currentObjectUrl) {
         URL.revokeObjectURL(state.currentObjectUrl);
     }
+    if (state.current3cxObjectUrl) {
+        URL.revokeObjectURL(state.current3cxObjectUrl);
+        state.current3cxObjectUrl = null;
+    }
 
+    const blob = audioBufferToWav(buffer);
+    state.currentAudioBuffer = buffer;
     state.currentObjectUrl = URL.createObjectURL(blob);
     nodes.audioPlayer.src = state.currentObjectUrl;
     nodes.audioPlayer.style.display = "block";
     nodes.downloadButton.href = state.currentObjectUrl;
     nodes.downloadButton.style.display = "inline-flex";
+    nodes.download3cxButton.style.display = "inline-flex";
+    nodes.download3cxButton.disabled = false;
+}
+
+async function download3cxAudio() {
+    if (!state.currentAudioBuffer || state.isBusy) {
+        setStatus("Genera prima l'audio da convertire per 3CX.", true);
+        return;
+    }
+
+    try {
+        setBusy(true);
+        setStatus("Converto in WAV 3CX: mono, 8 kHz, 16 bit...");
+        const buffer3cx = await convertTo3cxBuffer(state.currentAudioBuffer);
+        const blob = audioBufferToWav(buffer3cx);
+
+        if (state.current3cxObjectUrl) {
+            URL.revokeObjectURL(state.current3cxObjectUrl);
+        }
+
+        state.current3cxObjectUrl = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = state.current3cxObjectUrl;
+        link.download = "segreteria-3cx.wav";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        setStatus("File 3CX pronto: WAV mono, 8 kHz, 16 bit.");
+    } catch (error) {
+        setStatus("Conversione 3CX non riuscita.", true);
+    } finally {
+        setBusy(false);
+    }
 }
 
 async function generateAudio(event) {
@@ -387,7 +443,7 @@ async function generateAudio(event) {
         const finalBuffer = state.musicBuffer
             ? await mixAudios(voiceBuffer, state.musicBuffer)
             : voiceBuffer;
-        publishAudio(audioBufferToWav(finalBuffer));
+        publishAudio(finalBuffer);
         saveUsage(text.length);
         setStatus("Audio generato. Puoi ascoltarlo o scaricarlo in WAV.");
     } catch (error) {
@@ -453,6 +509,7 @@ function initEvents() {
     nodes.voiceSelect.addEventListener("change", renderVoiceDetails);
     nodes.voiceTypeFilter.addEventListener("change", renderVoiceOptions);
     nodes.previewButton.addEventListener("click", previewVoice);
+    nodes.download3cxButton.addEventListener("click", download3cxAudio);
     nodes.musicUpload.addEventListener("change", (event) => loadMusicFile(event.target.files[0]));
     nodes.musicVolume.addEventListener("input", () => {
         nodes.musicVolumeValue.textContent = `${Math.round(Number(nodes.musicVolume.value) * 100)}%`;

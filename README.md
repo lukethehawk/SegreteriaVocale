@@ -12,6 +12,7 @@ Generatore locale di messaggi per segreteria telefonica con Google Cloud Text-to
 - permette anteprima voce e filtro per famiglia voce;
 - mixa una traccia audio caricata localmente come sottofondo;
 - esporta il risultato finale in WAV;
+- esporta anche un WAV compatibile 3CX: mono, 8 kHz, 16 bit;
 - salva in locale solo preferenze UI e contatore caratteri.
 
 ## Requisiti
