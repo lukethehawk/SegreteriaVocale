@@ -91,6 +91,16 @@ h1 {
     letter-spacing: 0;
 }
 
+.app-logo-title {
+    width: min(360px, 70vw);
+}
+
+.app-logo {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
 .icon-button {
     width: 44px;
     height: 44px;
@@ -284,5 +294,9 @@ audio {
 
     h1 {
         font-size: 30px;
+    }
+
+    .app-logo-title {
+        width: min(310px, 76vw);
     }
 }
