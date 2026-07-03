@@ -20,6 +20,28 @@ Generatore locale di messaggi per segreteria telefonica con Google Cloud Text-to
 - Node.js 18 o superiore.
 - Una API key Google Cloud con Cloud Text-to-Speech API abilitata.
 
+## Mini guida: creare la API key Google Text-to-Speech
+
+1. Vai nella [Google Cloud Console](https://console.cloud.google.com/).
+2. Crea un nuovo progetto o seleziona un progetto esistente.
+3. Verifica che il billing sia attivo sul progetto. Google richiede il billing per usare Cloud Text-to-Speech, anche se rimani nel free tier.
+4. Apri `APIs & Services` > `Library`, cerca `Cloud Text-to-Speech API` e premi `Enable`.
+5. Apri `APIs & Services` > `Credentials`.
+6. Premi `Create credentials` > `API key`.
+7. Apri la chiave appena creata e aggiungi le restrizioni:
+   - `Application restrictions`: scegli `Websites`.
+   - Aggiungi questi referrer:
+     - `https://lukethehawk.github.io/SegreteriaVocale/*`
+     - `http://localhost:5173/*`
+   - `API restrictions`: scegli `Restrict key` e abilita solo `Cloud Text-to-Speech API`.
+8. Salva la chiave, copiala e incollala nell'app usando `Salva chiave`.
+
+Link utili:
+
+- Guida Google: https://cloud.google.com/text-to-speech/docs/before-you-begin
+- Gestione API key: https://cloud.google.com/docs/authentication/api-keys
+- Prezzi e free tier: https://cloud.google.com/text-to-speech/pricing
+
 ## Setup locale
 
 1. Avvia l'app:
