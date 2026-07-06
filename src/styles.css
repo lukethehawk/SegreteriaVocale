@@ -91,14 +91,20 @@ h1 {
     letter-spacing: 0;
 }
 
-.app-logo-title {
-    width: min(360px, 70vw);
+.app-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--text);
+    font-size: 38px;
+    font-weight: 800;
 }
 
 .app-logo {
     display: block;
-    width: 100%;
-    height: auto;
+    width: 68px;
+    height: 68px;
+    flex: 0 0 auto;
 }
 
 .icon-button {
@@ -296,7 +302,13 @@ audio {
         font-size: 30px;
     }
 
-    .app-logo-title {
-        width: min(310px, 76vw);
+    .app-brand {
+        gap: 10px;
+        font-size: 28px;
+    }
+
+    .app-logo {
+        width: 56px;
+        height: 56px;
     }
 }
