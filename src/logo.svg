@@ -1,15 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 690 150" role="img" aria-labelledby="title desc">
   <title id="title">Segreteria Vocale</title>
-  <desc id="desc">Icona con fumetto, telefono e onda audio.</desc>
+  <desc id="desc">Logo con fumetto, telefono, onda audio e scritta Segreteria Vocale.</desc>
   <defs>
     <linearGradient id="markGradient" x1="12" x2="130" y1="18" y2="130" gradientUnits="userSpaceOnUse">
       <stop stop-color="#1f8f79"/>
       <stop offset="1" stop-color="#d79b23"/>
+    </linearGradient>
+    <linearGradient id="wordGradient" x1="160" x2="675" y1="38" y2="108" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#17211f"/>
+      <stop offset="1" stop-color="#176b5b"/>
     </linearGradient>
   </defs>
   <g fill="none" fill-rule="evenodd">
     <path fill="url(#markGradient)" d="M75 12c35.346 0 64 25.967 64 58 0 32.032-28.654 58-64 58-7.457 0-14.616-1.157-21.273-3.285L24.5 139.5l7.83-26.304C19.312 102.55 11 87.075 11 70c0-32.033 28.654-58 64-58Z"/>
     <path fill="#fff" d="M49.915 42.22c3.324-3.32 8.716-3.32 12.04 0l9.1 9.09c2.646 2.644 3.207 6.725 1.378 9.98l-3.69 6.566c5.35 9.15 12.9 16.675 22.08 22.002l6.555-3.683c3.257-1.83 7.345-1.268 9.991 1.375l9.1 9.09c3.324 3.32 3.324 8.707 0 12.027l-4.688 4.684c-5.274 5.269-13.077 7.18-20.146 4.811-27.752-9.294-49.553-31.071-58.858-58.793-2.371-7.06-.458-14.855 4.816-20.124l4.688-4.684Z"/>
     <path stroke="#fff" stroke-linecap="round" stroke-width="6" d="M86 48v44m17-32v20m17-42v64"/>
+    <text x="162" y="92" fill="url(#wordGradient)" font-family="Arial, Helvetica, sans-serif" font-size="56" font-weight="800" letter-spacing="0">Segreteria Vocale</text>
   </g>
 </svg>
