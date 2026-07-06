@@ -92,7 +92,8 @@ h1 {
 }
 
 .app-brand {
-    width: min(430px, 72vw);
+    width: min(600px, calc(100vw - 150px));
+    max-width: 100%;
 }
 
 .app-logo {
@@ -297,6 +298,6 @@ audio {
     }
 
     .app-brand {
-        width: min(330px, 76vw);
+        width: min(390px, 76vw);
     }
 }

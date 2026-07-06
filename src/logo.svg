@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 690 150" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 150" role="img" aria-labelledby="title desc">
   <title id="title">Segreteria Vocale</title>
   <desc id="desc">Logo con fumetto, telefono, onda audio e scritta Segreteria Vocale.</desc>
   <defs>
@@ -6,7 +6,7 @@
       <stop stop-color="#1f8f79"/>
       <stop offset="1" stop-color="#d79b23"/>
     </linearGradient>
-    <linearGradient id="wordGradient" x1="160" x2="675" y1="38" y2="108" gradientUnits="userSpaceOnUse">
+    <linearGradient id="wordGradient" x1="160" x2="800" y1="38" y2="108" gradientUnits="userSpaceOnUse">
       <stop stop-color="#17211f"/>
       <stop offset="1" stop-color="#176b5b"/>
     </linearGradient>
