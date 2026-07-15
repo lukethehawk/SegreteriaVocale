@@ -174,7 +174,7 @@ function serveStatic(response, pathname) {
     });
 }
 
-const server = http.createServer(async (request, response) => {
+async function requestHandler(request, response) {
     try {
         const url = new URL(request.url, `http://${request.headers.host}`);
 
@@ -197,8 +197,14 @@ const server = http.createServer(async (request, response) => {
     } catch (error) {
         sendJson(response, 500, { error: error.message || "Errore interno." });
     }
-});
+}
 
-server.listen(PORT, () => {
-    console.log(`SegreteriaVocale pronta su http://localhost:${PORT}`);
-});
+if (process.env.VERCEL) {
+    module.exports = requestHandler;
+} else {
+    const server = http.createServer(requestHandler);
+
+    server.listen(PORT, () => {
+        console.log(`SegreteriaVocale pronta su http://localhost:${PORT}`);
+    });
+}

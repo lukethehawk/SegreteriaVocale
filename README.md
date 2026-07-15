@@ -80,6 +80,16 @@ La configurazione e versionata in `vercel.json`:
 
 Nelle impostazioni Vercel puoi lasciare il framework su `Other` oppure importare il repository e lasciare che Vercel legga `vercel.json`. Il build copia `index.html` e `src/` dentro `dist`.
 
+Se Vercel mostra `This Serverless Function has crashed`, sta usando ancora il preset `Node` o un deployment vecchio. In quel caso:
+
+1. Vai in `Settings` > `Build & Development Settings`.
+2. Imposta `Framework Preset` su `Other`.
+3. Se fai override manuale, usa:
+   - `Build Command`: `npm run build`
+   - `Output Directory`: `dist`
+   - `Install Command`: `npm install`
+4. Fai `Redeploy` dell'ultimo commit.
+
 Dopo il deploy, aggiungi anche il dominio Vercel tra i referrer consentiti della tua API key Google, ad esempio:
 
 ```text
