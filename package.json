@@ -4,6 +4,7 @@
   "private": true,
   "description": "Generatore locale di segreterie vocali con Google Cloud Text-to-Speech.",
   "scripts": {
+    "build": "node scripts/build-static.js",
     "dev": "node server.js",
     "start": "node server.js"
   },

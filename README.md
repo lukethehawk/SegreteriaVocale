@@ -65,6 +65,27 @@ Link utili:
 
 3. Incolla la chiave API nella pagina e premi `Salva chiave`.
 
+## Deploy su Vercel
+
+Il progetto e una app statica. `server.js` serve solo per lo sviluppo locale, quindi su Vercel non va usato come server di produzione.
+
+La configurazione e versionata in `vercel.json`:
+
+```json
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist"
+}
+```
+
+Nelle impostazioni Vercel puoi lasciare il framework su `Other` oppure importare il repository e lasciare che Vercel legga `vercel.json`. Il build copia `index.html` e `src/` dentro `dist`.
+
+Dopo il deploy, aggiungi anche il dominio Vercel tra i referrer consentiti della tua API key Google, ad esempio:
+
+```text
+https://nome-progetto.vercel.app/*
+```
+
 ## Note Google Text-to-Speech
 
 La lista voci non e piu hardcoded nel frontend. Il server chiama:
